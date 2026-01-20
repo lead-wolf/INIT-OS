@@ -1,0 +1,6 @@
+#!/bin/bash
+
+INSTALL_BASE=true
+INSTALL_DEVTOOLS=true
+INSTALL_APPS=true
+INSTALL_SHELL=true
