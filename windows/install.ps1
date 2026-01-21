@@ -29,6 +29,7 @@ if ($Install.Choco)    { Run-Installer "Chocolatey" "$ScriptRoot\installers\choc
 if ($Install.Scoop)    { Run-Installer "Scoop"       "$ScriptRoot\installers\scoop.ps1" }
 if ($Install.DevTools) { Run-Installer "Dev Tools"   "$ScriptRoot\installers\devtools.ps1" }
 if ($Install.AppList)  { Run-Installer "App List"    "$ScriptRoot\installers\app_list.ps1" }
+if ($Install.Shell)    { Run-Installer "Shell"       "$ScriptRoot\installers\shell\shell.ps1" }
 
 Write-Host "All done! Please reboot if Docker was installed." -ForegroundColor Cyan
 Stop-Transcript
