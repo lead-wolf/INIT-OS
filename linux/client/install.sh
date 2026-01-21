@@ -17,9 +17,16 @@ run() {
 
 echo "🚀 Starting CachyOS setup..."
 
+echo "Install base packages"
 if $INSTALL_BASE;     then run "Base packages"    "$SCRIPT_DIR/installers/base.sh"; fi
+
+echo "Install development tools"
 if $INSTALL_DEVTOOLS; then run "Dev tools"        "$SCRIPT_DIR/installers/devtools.sh"; fi
+
+echo "Install applications"
 if $INSTALL_APPS;     then run "Applications"     "$SCRIPT_DIR/installers/apps.sh"; fi
+
+echo "Install shell and fonts"
 if $INSTALL_SHELL;    then run "Zsh + Font"       "$SCRIPT_DIR/installers/shell.sh"; fi
 
 echo -e "\n🎉 Setup completed"

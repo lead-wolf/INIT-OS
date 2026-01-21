@@ -1,10 +1,11 @@
 # install.ps1
 # Run as Administrator
 
-if (-not ([Security.Principal.WindowsPrincipal]
- [Security.Principal.WindowsIdentity]::GetCurrent()
+if (-not ([Security.Principal.WindowsPrincipal] `
+    [Security.Principal.WindowsIdentity]::GetCurrent()
 ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Error "Run PowerShell as Administrator"
+
+    Write-Host "Please run this script as Administrator!" -ForegroundColor Red
     exit 1
 }
 
@@ -19,9 +20,9 @@ $ScriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Definition
 Write-Host "🚀 Starting Windows Dev Environment Setup..." -ForegroundColor Cyan
 
 function Run-Installer($name, $path) {
-    Write-Host "`n➡ Installing $name..." -ForegroundColor Yellow
-    . $path
-    Write-Host "✔ $name installed" -ForegroundColor Green
+    Write-Host "`n-> Installing $name..." -ForegroundColor Yellow
+    & $path
+    Write-Host "[OK] $name installed" -ForegroundColor Green
 }
 
 if ($Install.Choco)    { Run-Installer "Chocolatey" "$ScriptRoot\installers\choco.ps1" }
@@ -29,5 +30,5 @@ if ($Install.Scoop)    { Run-Installer "Scoop"       "$ScriptRoot\installers\sco
 if ($Install.DevTools) { Run-Installer "Dev Tools"   "$ScriptRoot\installers\devtools.ps1" }
 if ($Install.AppList)  { Run-Installer "App List"    "$ScriptRoot\installers\app_list.ps1" }
 
-Write-Host "`n🎉 All done! Please reboot if Docker was installed." -ForegroundColor Cyan
+Write-Host "All done! Please reboot if Docker was installed." -ForegroundColor Cyan
 Stop-Transcript

@@ -1,6 +1,7 @@
 #!/bin/bash
 set -Eeuo pipefail
 
+echo "Installing development tools..."
 yay -S --noconfirm \
   visual-studio-code-bin \
   jdk21-openjdk \

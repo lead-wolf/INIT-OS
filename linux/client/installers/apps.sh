@@ -2,9 +2,12 @@
 set -Eeuo pipefail
 
 # Browsers / Reader
-yay -S --noconfirm \
-  google-chrome \
-  foxitreader
+echo "Installing chrome"
+yay -S --noconfirm google-chrome 
+
+echo "Installing firefox"
+yay -S --noconfirm foxitreader
 
 # Office alternative
+echo "Installing libreoffice"
 sudo pacman -S --noconfirm libreoffice-fresh
